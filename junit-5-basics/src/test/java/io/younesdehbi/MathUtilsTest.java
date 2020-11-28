@@ -1,6 +1,7 @@
 package io.younesdehbi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,10 +21,22 @@ class MathUtilsTest {
 	
 	@Test
 	void testComputeCircleArea() {
-		
 		// Get our class instance
 		MathUtils mathUtils = new MathUtils();
 		// Asserting equality
 		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10), "Should return right circle area");
+	}
+	
+	@Test
+	void testDivide() {
+		// Get our class instance
+		MathUtils mathUtils = new MathUtils();
+		
+		// Dividing 1 by 0 so we get an exception
+		//mathUtils.divide(1, 0);
+		
+		// Asserting exceptions with assertThrows
+		assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), "Divide by zero should throw");
+		//assertThrows(NullPointerException.class, () -> mathUtils.divide(1, 0), "Divide by zero should throw");
 	}
 }
